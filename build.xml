@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mẫu build.xml chuẩn của NetBeans. Mọi tác vụ (Clean and Build, Run...) nằm trong nbproject/build-impl.xml,
+     file này được NetBeans tự sinh lại khi mở project nếu thiếu. -->
+<project name="CroakSquad" default="default" basedir=".">
+    <description>Builds, tests, and runs the project CroakSquad.</description>
+    <import file="nbproject/build-impl.xml"/>
+</project>

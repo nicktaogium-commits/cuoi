@@ -1,0 +1,29 @@
+CROAK SQUAD V24 - AUDIO + VPS
+================================
+
+AM THANH
+- src/assets/audio/background.wav: nhac nen, phat lap lien tuc.
+- src/assets/audio/hut.wav: phat khi su kien hut/nam dong doi thanh cong (key grab).
+- src/assets/audio/die.wav: phat khi nhan vat roi/cham bay gay chet (key death), ca online va offline.
+
+Ba file MP3 nguoi dung cung cap duoc chuyen sang WAV PCM 16-bit, mono, 22050 Hz de Java Sound doc duoc truc tiep ma khong can them thu vien MP3.
+Am luong: nhac nen -9 dB; am thanh hut -2 dB; am thanh chet -3 dB (neu thiet bi ho tro MASTER_GAIN).
+Nut M van tat/bat toan bo am thanh, tuy chon nhac nen duoc luu trong cau hinh.
+
+VPS
+- Client mac dinh: 103.249.117.201:48440 (IP cong khai + public NAT port).
+- VPS Java Server lang nghe TCP 80 (cong noi bo sau NAT).
+- UDP 5057 chi dung cho LAN discovery, khong can mo neu chi choi qua VPS.
+- Client tu dong chuyen cau hinh cu 127.0.0.1:5056 / localhost:5056 / 103.78.2.25:5056 / 103.78.2.25:46454 sang 103.249.117.201:48440.
+- Dia chi IP duoc an khoi menu; client van luu va su dung trong Settings.
+
+CHAY SERVER TREN VPS
+Luu y: cong TCP 80 phai dang trong; neu IIS/HTTP service dang chiem cong 80, hay dung dich vu do hoac yeu cau nha cung cap NAT public 48440 vao cong noi bo 5056.
+
+Kiem tra cong 80: netstat -ano | findstr :80
+Mo Windows Firewall (CMD Administrator): netsh advfirewall firewall add rule name="CroakSquad TCP 80" dir=in action=allow protocol=TCP localport=80 profile=any
+
+java -cp dist\CroakSquad.jar croaksquad.server.ServerMain --nogui 80
+
+CHAY CLIENT
+java -Dfile.encoding=UTF-8 -jar dist\CroakSquad.jar
